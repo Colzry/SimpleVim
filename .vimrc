@@ -8,16 +8,18 @@ syntax on
 " 在插入模式下也能使用退格
 set backspace=indent,eol,start
 
+"======================键位映射设置 start=============================
+
 " kj 或者 vv 齐按退出插入模式
-inoremap kj <esc>
-inoremap vv <esc>
+inoremap kj <ESC>
+inoremap vv <ESC>
+
 
 " 使用ctrlc, v就可以实现vim之间的复制粘贴
 vnoremap <C-c> :w! ~/tmp/clipboard.txt <CR>
 inoremap <C-v> <Esc>:r ~/tmp/clipboard.txt <CR>
 " 文档全选
-nnoremap <C-a> ggvG$
-inoremap <C-a> <Esc>ggvG$
+vnoremap <C-a> ggvG$
 
 noremap U 5j
 noremap E 5k
@@ -30,10 +32,26 @@ map <Leader>1 ^
 map <Leader>0 $
 
 " 配置常用键位映射
+map s <nop>
 map S :w<CR>
 map Q :q<CR>
 map R :source $MYVIMRC<CR>
 
+" 删除光标所在单词
+nmap <LEADER>w daw
+" 向下翻半屏
+nmap <Leader>u <C-U>
+" 向上翻半屏
+nmap <Leader>d <C-D>
+" 使用NERDTree插件打开文件树形结构列表
+nmap <LEADER>n :NERDTreeToggle<CR>
+" 使用TlistToggle查看文件函数列表
+nnoremap  <Leader>m  :TlistToggle <CR>
+"======================键位映射设置 end===============================
+
+
+
+"======================窗口设置 start================================
 " 分割窗口
 map s[ :set nosplitright<CR>:vsplit<CR>
 map s] :set splitright<CR>:vsplit<CR>
@@ -51,10 +69,12 @@ map <LEADER><up> :res +5<CR>
 map <LEADER><down> :res -5<CR>
 map <LEADER><left> :vertical resize-5<CR>
 map <LEADER><right> :vertical resize+5<CR>
+"======================窗口设置 end==================================
 
-
+"======================通用设置 start================================
 set number                " 显示行数
-"set paste				  " 取消粘贴时带注释
+set ttimeoutlen=0         " 设置<ESC>键响应时间
+"set paste				  " 取消粘贴时带注释，若使用esc映射键就不能使用
 set norelativenumber
 set cursorline			  " 高亮显示当前行
 set showcmd               " 显示不完全命令
@@ -72,17 +92,8 @@ set smartcase             " 如果有大小写字母，则切换到大小写敏�
 set autoindent            " 自动缩进 
 set ai                    " vim中复制粘贴保存格式
 set shortmess=atI         " 启动的时候不显示那个援助乌干达儿童的提示
+"======================通用设置 end=================================
 
-" 删除光标所在单词
-nmap <LEADER>w daw
-" 向下翻半屏
-nmap <Leader>u <C-U>
-" 向上翻半屏
-nmap <Leader>d <C-D>
-" 使用NERDTree插件打开文件树形结构列表
-nmap <LEADER>n :NERDTreeToggle<CR>
-" 使用TlistToggle查看文件函数列表
-nnoremap  <Leader>m  :TlistToggle <CR>
 
 
 "把方法列表放在屏幕的右侧
@@ -98,6 +109,7 @@ filetype plugin on
 filetype indent on
 
 
+"======================括号匹配设置 start=============================
 "花括号自动格式化，首行一个tab
 autocmd FileType cpp,java inoremap { {<CR>}<ESC>kA<CR>
 "括号匹配
@@ -105,15 +117,15 @@ inoremap ( ()<ESC>i
 inoremap [ []<ESC>i
 inoremap ' ''<ESC>i
 inoremap " ""<ESC>i
+"======================括号匹配设置 end===============================
 
 
-"======================代码补全配置=============================
+"======================代码补全配置 start=============================
 
 " 添加自动补全字典
-" au FileType php setlocal dict+=~/.vim/dictionary/php_keywords_list.txt
-" au FileType cpp setlocal dict+=~/.vim/dictionary/cpp_keywords_list.txt
-" au FileType java setlocal dict+=~/.vim/dictionary/java_keywords_list.txt
-au FileType markdown setlocal dict+=~/.vim/dictionary/words.txt
+au FileType php setlocal dict+=~/.vim/dictionary/php_keywords_list.txt
+au FileType cpp setlocal dict+=~/.vim/dictionary/cpp_keywords_list.txt
+au FileType java setlocal dict+=~/.vim/dictionary/java_keywords_list.txt
 
 " 设定需要生效的文件类型，如果是 "*" 的话，代表所有类型
 let g:apc_enable_ft = {'*':1}
@@ -127,9 +139,10 @@ set completeopt=menu,menuone,noselect
 " 禁止在下方显示一些啰嗦的提示
 set shortmess+=c
 
-"=====================代码补全配置==============================
+"=====================代码补全配置 end================================
 
 
+"======================插件设置 start================================
 call plug#begin('~/.vim/plugged')
 " 底部文本信息
 Plug 'vim-airline/vim-airline'
@@ -159,9 +172,15 @@ Plug 'skywind3000/vim-dict'
 Plug 'scrooloose/nerdcommenter'
 
 call plug#end()
+"======================插件设置 end==================================
 
+
+
+" 主题设置
 let g:SnazzyTransparent = 1
 color snazzy
+
+
 
 "===========================文件头部注释设置 start====================================
 
@@ -203,7 +222,7 @@ func SetTitle()
                 call SetComment_sh()
 
         elseif &filetype == 'sh'
-                call setline(1,"#!/system/bin/sh")
+                call setline(1,"#!/bin/bash")
                 call setline(2,"")
                 call SetComment_sh()
 
