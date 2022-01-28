@@ -103,14 +103,14 @@ function print_logo() {
     color="$(tput setaf 6)"
     normal="$(tput sgr0)"
     printf "${color}"
-    echo '{________                          {__         {__                '
-    echo '{__                                 {__       {__  {_             '
-    echo '{__         {__     {____ {__   {__  {__     {__     {___ {__ {__ '
-    echo '{______   {__  {__ {__     {__ {__    {__   {__   {__ {__  {_  {__'
-    echo '{__      {__   {__   {___    {___      {__ {__    {__ {__  {_  {__'                   
-    echo '{__      {__   {__     {__    {__       {____     {__ {__  {_  {__'
-    echo '{________  {__ {___{__ {__   {__         {__      {__{___  {_  {__'
-    echo '                           {__                                    '
+    echo '  _____ _                 _   __      ___           '
+    echo ' / ____(_)               | |  \ \    / (_)          '
+    echo '| (___  _ _ __ ___  _ __ | | __\ \  / / _ _ __ ___  '
+    echo ' \___ \| | |_ | _ \| |_ \| |/ _ \ \/ / | | |_  | _ \ '
+    echo ' ____) | | | | | | | |_) | |  __/\  /  | | | | | | |'                   
+    echo '|_____/|_|_| |_| |_| .__/|_|\___| \/   |_|_| |_| |_|'
+    echo '                   | |                              '
+    echo '                   |_|                              '
     echo ''
     echo ''
     echo '......is now installed!!!'
@@ -118,12 +118,12 @@ function print_logo() {
     printf "${normal}"
 }
 
-function install_EasyVim() {
+function install_SimpleVim() {
 	backup_vimrc_and_vim
 	copy_files
 	sudo apt install vim-nox
 	print_logo
 }
 
-install_EasyVim
+install_SimpleVim
 
