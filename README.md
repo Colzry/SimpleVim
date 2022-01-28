@@ -3,15 +3,15 @@
 ### 安装
 
 ```sh
-git clone https://gitee.com/colzry/easy-vim.git
-cd easy-vim/
+git clone https://gitee.com/colzry/simple-vim.git
+cd simple-vim/
 bash install.sh
 ```
 
 ### 卸载
 
 ```sh
-cd ~/easy-vim/
+cd ~/simple-vim/
 bash uninstall.sh
 ```
 
