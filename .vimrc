@@ -15,9 +15,9 @@ inoremap kj <ESC>
 inoremap vv <ESC>
 
 
-" 使用ctrlc, v就可以实现vim之间的复制粘贴
-vnoremap <C-c> :w! ~/tmp/clipboard.txt <CR>
-inoremap <C-v> <Esc>:r ~/tmp/clipboard.txt <CR>
+" 使用ctrlc, v就可以实现vim之间的复制粘贴,前提+clipboard
+vnoremap <C-c> "+yy
+noremap <C-v> "+p
 " 文档全选
 vnoremap <C-a> ggvG$
 
