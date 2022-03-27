@@ -118,7 +118,13 @@ function print_logo() {
     printf "${normal}"
 }
 
+# 安装vim-gtk
+function install_vim() {
+    sudo apt-get install vim-gtk -y
+}
+
 function install_SimpleVim() {
+    install_vim
 	backup_vimrc_and_vim
 	copy_files
 	sudo apt install vim-nox
