@@ -73,6 +73,7 @@ map <LEADER><right> :vertical resize+5<CR>
 
 "======================通用设置 start================================
 set number                " 显示行数
+set encoding=utf-8        " 设置字符编码
 set ttimeoutlen=0         " 设置<ESC>键响应时间
 "set paste				  " 取消粘贴时带注释，若使用esc映射键就不能使用
 set norelativenumber
