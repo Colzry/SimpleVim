@@ -1,4 +1,4 @@
-![image-20220123212412821](https://gitee.com/Colzry/pic/raw/master/picture/202201232124909.png)
+![](https://picture-czy.oss-cn-beijing.aliyuncs.com/img/202209202334685.png)
 
 ### 安装
 
@@ -17,6 +17,8 @@ bash uninstall.sh
 
 ### 使用
 ```bash
+<Leader> 为空格键
+
 vv或者kj     退出插入模式
 Ctrl+a		全选
 U			光标向下移动5行=5j
