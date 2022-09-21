@@ -4,14 +4,14 @@
 
 ```sh
 git clone https://github.com/Colzry/SimpleVim.git
-cd simple-vim/
+cd SimpleVim/
 bash install.sh
 ```
 
 ### 卸载
 
 ```sh
-cd ~/simple-vim/
+cd ~/SimpleVim/
 bash uninstall.sh
 ```
 
