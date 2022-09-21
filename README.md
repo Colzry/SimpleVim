@@ -3,7 +3,7 @@
 ### 安装
 
 ```sh
-git clone https://gitee.com/colzry/simple-vim.git
+git clone https://github.com/Colzry/SimpleVim.git
 cd simple-vim/
 bash install.sh
 ```

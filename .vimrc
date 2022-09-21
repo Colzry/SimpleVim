@@ -124,9 +124,12 @@ inoremap " ""<ESC>i
 "======================代码补全配置 start=============================
 
 " 添加自动补全字典
-au FileType php setlocal dict+=~/.vim/dictionary/php_keywords_list.txt
-au FileType cpp setlocal dict+=~/.vim/dictionary/cpp_keywords_list.txt
-au FileType java setlocal dict+=~/.vim/dictionary/java_keywords_list.txt
+let g:vim_dict_dict = [
+			\ '~/.vim/dictionary/php_keywords_list.txt',
+			\ '~/.vim/dictionary/cpp_keywords_list.txt',
+			\ '~/.vim/dictionary/java_keywords_list.txt',
+			\ '~/.vim/dictionary/words.txt',
+			\	]
 
 " 设定需要生效的文件类型，如果是 "*" 的话，代表所有类型
 let g:apc_enable_ft = {'*':1}

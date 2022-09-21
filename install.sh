@@ -118,17 +118,31 @@ function print_logo() {
     printf "${normal}"
 }
 
-# 安装vim-gtk
+
+## 定义目录和文件
+LinuxRelease=/etc/os-release
+RedHatRelease=/etc/redhat-release
+DebianVersion=/etc/debian_version
+
+## 系统判定变量,并安装vim
 function install_vim() {
-    sudo apt-get install vim-gtk -y
+    ## 判定当前系统基于 Debian or RedHat
+    if [ -s $RedHatRelease ]; then
+	sudo yum install vim-gtk -y >& /dev/null
+    elif [ -s $DebianVersion ]; then
+	sudo apt install vim-gtk vim-nox -y >& /dev/null
+    else
+        echo -e "\n 无法判断当前运行环境，请先确认本脚本针对当前操作系统是否适配\n"
+        exit
+    fi   
 }
+
 
 function install_SimpleVim() {
     install_vim
-	backup_vimrc_and_vim
-	copy_files
-	sudo apt install vim-nox
-	print_logo
+    backup_vimrc_and_vim
+    copy_files
+    print_logo
 }
 
 install_SimpleVim
