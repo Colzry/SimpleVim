@@ -89,7 +89,11 @@ exec "nohlsearch"
 set incsearch             " 增量搜索
 set ignorecase            " 设置默认大小写不敏感查找
 set smartcase             " 如果有大小写字母，则切换到大小写敏感查找
-set autoindent            " 自动缩进 
+set smartindent           " 自动缩进 
+set ts=4                  " tab使用4个空格
+set softtabstop=4         " tab使用4个空格   
+set shiftwidth=4          " tab使用4个空格
+set expandtab             " tab使用4个空格
 set ai                    " vim中复制粘贴保存格式
 set shortmess=atI         " 启动的时候不显示那个援助乌干达儿童的提示
 "======================通用设置 end=================================
@@ -111,14 +115,15 @@ filetype indent on
 
 "======================括号匹配设置 start=============================
 "花括号自动格式化，首行一个tab
-autocmd FileType * inoremap { {<CR>}<ESC>kA<CR>
+" inoremap { {}<ESC>i<CR><ESC>V<O
+inoremap { {}<ESC>i
+inoremap {<CR> {<CR>}<ESC>O
 "括号匹配
 inoremap ( ()<ESC>i
 inoremap [ []<ESC>i
 inoremap ' ''<ESC>i
 inoremap " ""<ESC>i
 "======================括号匹配设置 end===============================
-
 
 "======================代码补全配置 start=============================
 
