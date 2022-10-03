@@ -75,17 +75,16 @@ map <LEADER><right> :vertical resize+5<CR>
 set number                " 显示行数
 set encoding=utf-8        " 设置字符编码
 set ttimeoutlen=0         " 设置<ESC>键响应时间
-"set paste				  " 取消粘贴时带注释，若使用esc映射键就不能使用
+"set paste		  " 取消粘贴时带注释，若使用esc映射键就不能使用
 set norelativenumber
-set cursorline			  " 高亮显示当前行
+set cursorline		  " 高亮显示当前行
 set showcmd               " 显示不完全命令
-set showmatch			  " 显示匹配括号
-set wildmenu     		  " vim 自身命令行模式智能补全
-set noswapfile     		  " 不产生.swp文件
-set nobackup			  " 不生成备份文件
-set history=1000		  " 历史记录数
+set showmatch		  " 显示匹配括号
+set wildmenu     	  " vim 自身命令行模式智能补全
+set noswapfile     	  " 不产生.swp文件
+set nobackup		  " 不生成备份文件
+set history=1000	  " 历史记录数
 set hlsearch              " 搜索关键词高亮
-set noexpandtab 		  " 不要用空格代替制表符
 exec "nohlsearch"
 set incsearch             " 增量搜索
 set ignorecase            " 设置默认大小写不敏感查找
@@ -112,7 +111,7 @@ filetype indent on
 
 "======================括号匹配设置 start=============================
 "花括号自动格式化，首行一个tab
-autocmd FileType cpp,java inoremap { {<CR>}<ESC>kA<CR>
+autocmd FileType * inoremap { {<CR>}<ESC>kA<CR>
 "括号匹配
 inoremap ( ()<ESC>i
 inoremap [ []<ESC>i
@@ -210,7 +209,7 @@ func SetComment_sh()
         call setline(4, "#   Copyright (C) ".strftime("%Y")." IEucd Inc. All rights reserved.")
         call setline(5, "#   ")
         call setline(6, "#   FileName：".expand("%:t"))
-        call setline(7, "#   Author：SongTL, colzry@163.com")
+        call setline(7, "#   Author：Colzry, colzry@163.com")
         call setline(8, "#   CreateDate：".strftime("%Y-%m-%d"))
         call setline(9, "#   Description：")
         call setline(10, "#")
