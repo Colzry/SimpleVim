@@ -47,6 +47,18 @@ nmap <Leader>d <C-D>
 nmap <LEADER>n :NERDTreeToggle<CR>
 " 使用TlistToggle查看文件函数列表
 nnoremap  <Leader>m  :TlistToggle <CR>
+
+" 插入模式下Ctrl + j光标下移，并创建新的一行
+inoremap <C-j> <Esc>o
+
+" Alt + j 行下移，ALT + k 行上移
+nnoremap <A-j> :m+<CR>==
+nnoremap <A-k> :m-2<CR>==
+inoremap <A-j> <Esc>:m+<CR>==gi
+inoremap <A-k> <Esc>:m-2<CR>==gi
+vnoremap <A-j> :m'>+<CR>gv=gv
+vnoremap <A-k> :m-2<CR>gv=gv
+
 "======================键位映射设置 end===============================
 
 
