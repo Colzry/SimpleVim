@@ -120,7 +120,6 @@ function print_logo() {
 
 
 ## 定义目录和文件
-LinuxRelease=/etc/os-release
 RedHatRelease=/etc/redhat-release
 DebianVersion=/etc/debian_version
 
@@ -128,9 +127,17 @@ DebianVersion=/etc/debian_version
 function install_vim() {
     ## 判定当前系统基于 Debian or RedHat
     if [ -s $RedHatRelease ]; then
-	sudo yum install vim-gtk -y >& /dev/null
+        if [ $UID -ne 0 ]; then
+            sudo yum install vim-nox -y &> /dev/null
+        else
+            yum install vim-nox -y &> /dev/null
+        fi
     elif [ -s $DebianVersion ]; then
-	sudo apt install vim-gtk vim-nox -y >& /dev/null
+        if [ $UID -ne 0 ]; then
+	    sudo apt install vim-nox -y &> /dev/null
+        else
+	    apt install vim-nox -y &> /dev/null
+        fi
     else
         echo -e "\n 无法判断当前运行环境，请先确认本脚本针对当前操作系统是否适配\n"
         exit
