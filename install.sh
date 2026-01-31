@@ -123,25 +123,45 @@ function print_logo() {
 RedHatRelease=/etc/redhat-release
 DebianVersion=/etc/debian_version
 
+## 定义目录和文件
+RedHatRelease=/etc/redhat-release
+DebianVersion=/etc/debian_version
+ArchRelease=/etc/arch-release
+
 ## 系统判定变量,并安装vim
 function install_vim() {
-    ## 判定当前系统基于 Debian or RedHat
+    ## 判定当前系统
     if [ -s $RedHatRelease ]; then
-        if [ $UID -ne 0 ]; then
-            sudo yum install vim-nox -y &> /dev/null
-        else
-            yum install vim-nox -y &> /dev/null
-        fi
+        # RedHat/CentOS 系列
+        installer="yum"
+        package="vim-nox"
     elif [ -s $DebianVersion ]; then
-        if [ $UID -ne 0 ]; then
-	    sudo apt install vim-nox -y &> /dev/null
-        else
-	    apt install vim-nox -y &> /dev/null
-        fi
+        # Debian/Ubuntu 系列
+        installer="apt"
+        package="vim-nox"
+    elif [ -f $ArchRelease ]; then
+        # Arch Linux 系列
+        installer="pacman"
+        package="vim"
     else
         echo -e "\n 无法判断当前运行环境，请先确认本脚本针对当前操作系统是否适配\n"
         exit
-    fi   
+    fi
+
+    # 执行安装逻辑
+    if [ $UID -ne 0 ]; then
+        if [ "$installer" == "pacman" ]; then
+            sudo pacman -S --noconfirm $package &> /dev/null
+        else
+            sudo $installer install $package -y &> /dev/null
+        fi
+    else
+        if [ "$installer" == "pacman" ]; then
+            pacman -S --noconfirm $package &> /dev/null
+        else
+            $installer install $package -y &> /dev/null
+        fi
+    fi
 }
 
 
